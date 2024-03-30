@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) {
+        double res;
+        Scanner in = new Scanner(System.in);
+        System.out.println("введите два числа");
+        double a = in.nextDouble();
+        double b = in.nextDouble();
+        System.out.print("введите операцию.\n 1. сложение \n 2. вычитание \n 3. умножение \n 4. деление");
+        char op = in.next().charAt(0);
+        switch (op){
+            case '1':
+                res= a + b;
+                op='+';
+                break;
+            case '2':
+                res = a-b;
+                op = '-';
+                break;
+            case '3':
+                res = a*b;
+                op ='*';
+                break;
+            case '4':
+                res= a / b;
+                op = '/';
+                break;
+            default:
+            System.out.print("такой операции нет");
+                return;
+        }
+        System.out.print("ответ: \n");
+        System.out.printf(a + " " + op + " " + b + " = " + res);
+        
+    }
+}
