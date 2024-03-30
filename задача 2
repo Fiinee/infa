@@ -1,0 +1,104 @@
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) {
+        boolean isDoorOpen = false;
+        boolean DoorKey = false;
+        boolean DrawerKey = false;
+        boolean GotThat2 = false;
+        boolean GotThat3 = false;
+        boolean GotThat4 = false;
+        boolean GotThat5 = false;
+        boolean GotThat6 = false;
+        int VentOpen = 0;
+        
+        int artef = 0;
+        Scanner in = new Scanner(System.in);
+        System.out.println("вы проснулись в комнате. Введите свое имя");
+        String name = in.nextLine();
+        while (!isDoorOpen){
+        System.out.print(" Вы осматриваетесь. Выберите, что хотите сделать \n ");
+        System.out.print("1. открыть дверь \n 2. заглянуть под кровать \n 3. открыть ящик в углу комнаты \n 4. открыть вентиляцию \n 5. взглянуть на тумбочку \n 6. взглянуть на статую рядом с дверью");
+        char op = in.next().charAt(0);
+        switch (op){
+            case '1':
+              {
+                if (!DoorKey){
+                    System.out.print("дверь закрыта. Вам нужно найти отмычку \n");
+                }
+                else {
+                    System.out.print("Вы открываете дверь отмычкой и успешно сбегаете \n");
+                    isDoorOpen=true;
+                }
+               }
+                break;
+            case '2':
+                { 
+                    if (!GotThat2){
+                      artef +=1;
+                      System.out.print(name + ", вы нашли артефакт. У вас есть "+ artef + " артефакт(а) \n");
+                      GotThat2=true;
+                     }
+                    else 
+                    System.out.print ("Под кроватью ничего полезного больше нет \n");
+                }
+                break;
+            case '3':{
+                if (!DrawerKey){
+                    System.out.print("ящик закрыт. Вам нужно найти ключ от него \n");
+                }
+                else if (DrawerKey & !GotThat3){
+                System.out.print("вы открываете ящик. "+ name + ", вы нашли отмычку \n");
+                DoorKey=true;
+                GotThat3= true;
+                }
+            }
+                break;
+            case '4':
+                { if(!GotThat4 & VentOpen<2 ){
+                    System.out.print("Закрыто.Вентиляция не поддается \n");
+                    VentOpen+=1;
+                     }
+                else if (!GotThat4){
+                    artef +=1;
+                    System.out.print("Вы сломали решетку вентиляции. "+ name +", вы нашли артефакт. У вас есть "+ artef + " артефакт(а) \n");
+                    GotThat4 = true;
+                }
+               else 
+                    System.out.print("В вентиляции больше ничего нет \n");
+                }
+                break;
+            case '5':
+                 if (!GotThat5){
+                      artef +=1;
+                      System.out.print(name + ", вы нашли артефакт. У вас есть "+ artef + " артефакт(а) \n");
+                      GotThat5=true;
+                     }
+                    else 
+                    System.out.print ("Тумбочка пуста \n");
+                break;
+            case '6':
+                {
+                    if (!GotThat6){
+                        if(artef==3){
+                            DrawerKey=true;
+                            System.out.print("вы активируете статую. "+name+ ", вы нашли ключ от ящика \n");
+                            GotThat6 = true;
+                        }
+                        else 
+                           System.out.print("Вам не хватает предметов для взаимодействия со статуей \n");
+                    }
+                    else 
+                        System.out.print("Статуя. Она ничего не делает \n");
+                }
+                break;
+            default:
+            System.out.print("Вы не можете этого сделать. Похоже, придется выбрать один из существующих вариантов \n");
+                break;
+        }
+        }
+       
+       
+        
+    }
+}
